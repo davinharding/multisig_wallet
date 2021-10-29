@@ -1,7 +1,6 @@
 {
   "name": "wallet",
   "version": "1.0.0",
-  "description": "",
   "main": "truffle-config.js",
   "directories": {
     "test": "test"
@@ -13,6 +12,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@openzeppelin/test-helpers": "^0.5.13"
-  }
+    "@openzeppelin/test-helpers": "^0.5.15",
+    "webpack": "^4.44.2"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davinharding/multisig_wallet.git"
+  },
+  "bugs": {
+    "url": "https://github.com/davinharding/multisig_wallet/issues"
+  },
+  "homepage": "https://github.com/davinharding/multisig_wallet#readme",
+  "description": ""
 }

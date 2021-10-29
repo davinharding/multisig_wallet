@@ -14,13 +14,13 @@ contract Wallet {
   Transfer[] public transfers;
   mapping(address => mapping(uint => bool)) public approvals;
 
-  constructor(address[] memory _approvers, uint _quorum) payable public {
+  constructor(address[] memory _approvers, uint _quorum) public {
     approvers = _approvers;
     quorum = _quorum;
   }
 
   function getApprovers() external view returns(address[] memory) {
-     return approvers;
+    return approvers;
   }
 
   function getTransfers() external view returns(Transfer[] memory) {
