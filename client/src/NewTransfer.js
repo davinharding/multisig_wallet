@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Button from 'react-bootstrap/Button'
 
 function NewTransfer({createTransfer}) {
     const [transfer, setTransfer] = useState(undefined);
@@ -29,7 +30,7 @@ function NewTransfer({createTransfer}) {
                     type="text"
                     onChange={e => updateTransfer(e, 'to')}
                 />
-                <button>Submit</button>
+                <Button variant="primary">Submit</Button>
             </form>            
         </div>
     )

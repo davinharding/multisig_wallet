@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from 'react-bootstrap/Button'
 
 function TransferList({transfers, approveTransfer}){
     return(
@@ -22,7 +23,7 @@ function TransferList({transfers, approveTransfer}){
                             <td>{transfer.to}</td>
                             <td>
                                 {transfer.approvals}
-                                <button onClick={() => approveTransfer(transfer.id)}>Approve</button>
+                                <Button variant="success" onClick={() => approveTransfer(transfer.id)}>Approve</Button>
                             </td>
                             <td>{transfer.sent ? 'yes' : 'no'}</td>
                         </tr>
