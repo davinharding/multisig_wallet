@@ -1,18 +1,19 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button'
+import Table from 'react-bootstrap/Table'
 
 function TransferList({transfers, approveTransfer}){
     return(
         <div>
             <h2>Transfers</h2>
-            <table>
+            <Table striped bordered hover>
                 <thead>
                     <tr>
                         <th>Id</th>
                         <th>Amount</th>
                         <th>To</th>
-                        <th>approvals</th>
-                        <th>sent</th>
+                        <th>Approvals</th>
+                        <th>Sent</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,11 +26,11 @@ function TransferList({transfers, approveTransfer}){
                                 {transfer.approvals}
                                 <Button variant="success" onClick={() => approveTransfer(transfer.id)}>Approve</Button>
                             </td>
-                            <td>{transfer.sent ? 'yes' : 'no'}</td>
+                            <td>{transfer.sent ? 'Yes' : 'No'}</td>
                         </tr>
                     ))}
                 </tbody>
-            </table>
+            </Table>
         </div>
     )
 }
