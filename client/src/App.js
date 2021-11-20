@@ -21,16 +21,36 @@ function App() {
       const wallet = await getWallet(web3);
       const approvers = await wallet.methods.getApprovers().call();
       const quorum = await wallet.methods.quorum().call();
-      const transfers = await wallet.methods.getTransfers().call();
+      await getTransfer(wallet, accounts);
       setWeb3(web3);
       setAccounts(accounts);
       setWallet(wallet);
       setApprovers(approvers);
       setQuorum(quorum);
-      setTransfers(transfers);
     };
     init();
   }, )
+
+  const getTransfer = async (wallet, accounts) => {
+    const transfers = await wallet.methods.getTransfers().call();
+    let newTransfers;
+    await transfers.forEach(async (transfer) => {
+      const isTransferApprovedByCurrentUser = await wallet.methods
+      .approvals(accounts[0], transfer.id)
+      .call();
+      let newTransferObj = {
+        id: transfer.id,
+        amount: transfer.amount,
+        to: transfer.to,
+        approvals: transfer.approvals,
+        sent: transfer.sent,
+        isTransferApprovedByCurrentUser: isTransferApprovedByCurrentUser
+      };  
+      setTransfers(transfers => [...transfers, newTransferObj]) 
+    }); 
+    
+  }; 
+
 
   const createTransfer = async transfer => {
     if(transfer && transfer.amount && transfer.to){
@@ -40,8 +60,9 @@ function App() {
     }else{
       alert('Please fill in all fields before submitting!')
     }
-
-    setTransfers(await wallet.methods.getTransfers().call())
+    console.log(transfers);
+    setTransfers([]);
+    getTransfer(wallet, accounts);
   }
 
   const approveTransfer = async transferId => {
@@ -49,8 +70,8 @@ function App() {
       .approveTransfer(transferId)
       .send({from: accounts[0]});
     
-    setTransfers(await wallet.methods.getTransfers().call());
-    ;
+    setTransfers([]);
+    getTransfer(wallet, accounts);
   }
 
 
