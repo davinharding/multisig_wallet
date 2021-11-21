@@ -18,8 +18,8 @@ function NewTransfer({createTransfer}) {
     return (
         <div>
             <h2>Create Transfer</h2>
-            <Form >
-                <Form.Group className="mb-3">
+            <Form style={{width: '50%'}}>
+                <Form.Group className="mb-3" >
                     <Form.Label htmlFor="amount">Amount</Form.Label>
                     <Form.Control
                         id="amount"
