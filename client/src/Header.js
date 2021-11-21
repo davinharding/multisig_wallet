@@ -9,14 +9,14 @@ function Header({approvers, quorum}) {
                 {approvers.map(approver => {
                     return(
                         
-                        <li><Badge bg="primary">{approver}</Badge></li>
+                        <li><Badge bg="info">{approver}</Badge></li>
                         
                     )
                 })}
             </ul>
             <h4>Quorum</h4>
             <ul>
-            <Badge bg="primary">{quorum}</Badge>
+            <Badge bg="info">{quorum}</Badge>
             </ul>
         </header>
     );
