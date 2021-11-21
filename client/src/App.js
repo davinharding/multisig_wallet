@@ -29,11 +29,10 @@ function App() {
       setQuorum(quorum);
     };
     init();
-  }, )
+  }, []);
 
   const getTransfer = async (wallet, accounts) => {
     const transfers = await wallet.methods.getTransfers().call();
-    let newTransfers;
     await transfers.forEach(async (transfer) => {
       const isTransferApprovedByCurrentUser = await wallet.methods
       .approvals(accounts[0], transfer.id)
@@ -47,8 +46,7 @@ function App() {
         isTransferApprovedByCurrentUser: isTransferApprovedByCurrentUser
       };  
       setTransfers(transfers => [...transfers, newTransferObj]) 
-    }); 
-    
+    });     
   }; 
 
 
@@ -60,7 +58,6 @@ function App() {
     }else{
       alert('Please fill in all fields before submitting!')
     }
-    console.log(transfers);
     setTransfers([]);
     getTransfer(wallet, accounts);
   }
