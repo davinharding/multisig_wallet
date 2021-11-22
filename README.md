@@ -1,2 +1,3 @@
-# multisig_wallet
-Multisignature wallet written in Solidity
+# Davin's Multi-Sig Wallet
+
+A multisignature wallet smart contract written in Solidity with a React UI.
